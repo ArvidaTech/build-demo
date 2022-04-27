@@ -47,6 +47,11 @@ pipeline {
 			}
 		}	
       }
+    stage("Invoke Deploy") {
+      steps {
+        build job: 'deploy-demo/main', parameters: [string(name: 'dockerImage', value:dockerImage)], wait: false
+      }
+    }
     }
   }
 }
