@@ -49,16 +49,13 @@ pipeline {
       }
     }
 	  
-    stage("Invoke Deploy") {
-      steps {
-        build job: 'deploy-demo/main', wait: false
-      }
-    }
-    post {
-        success {
-            echo 'Run E2E Test pipeline!'
-            build job: 'deploy-demo', parameters: [string(name: 'img', value: registry + ":$BUILD_NUMBER" )]
+
+
+  }
+post {
+  success {
+    echo 'Run Deploy pipeline!'
+    build job: 'deploy-demo', parameters: [string(name: 'img', value: registry + ":$BUILD_NUMBER" )]
         }
     }
-  }
 }
