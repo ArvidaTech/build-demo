@@ -12,12 +12,12 @@ pipeline {
         git branch: 'main', url: 'https://github.com/ArvidaTech/build-demo.git'
       }
     }
-    stage('Pre-Build: Clean stage'){
+/*    stage('Pre-Build: Clean stage'){
       steps{
         sh 'mvn clean'
       }
     }
-        
+*/        
     stage("Build: Maven Package") {
       steps {
         sh 'mvn package'
