@@ -7,12 +7,17 @@ pipeline {
   agent any
   stages { 
 	  
-    stage("Build: Clone git repo") {
+    stage("Pre-Build: Clone git repo") {
       steps {
         git branch: 'main', url: 'https://github.com/ArvidaTech/build-demo.git'
       }
     }
-
+    stage('Pre-Build: Clean stage'){
+      steps{
+        sh 'mvn clean'
+      }
+    }
+        
     stage("Build: Maven Package") {
       steps {
         sh 'mvn package'
@@ -25,7 +30,7 @@ pipeline {
       }
     }
 	
-    stage("Build: docker img") {
+    stage("Post-Build: docker img") {
       steps {
 	  	script { 
           dockerImage = docker.build registry + ":$BUILD_NUMBER" 
@@ -33,7 +38,7 @@ pipeline {
       }
     }
 	
-    stage("Build: push docker image") {
+    stage("Post-Build: push docker image") {
       steps {
 	    script { 
 		  docker.withRegistry('', registryCredential) {
