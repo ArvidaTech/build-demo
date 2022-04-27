@@ -19,9 +19,9 @@ pipeline {
       }
     }
 	
-	stage("Build: test Package") {
+	stage("Build: TU") {
       steps {
-        sh 'mvn test'
+        sh 'mvn clean test'
       }
     }
 	
