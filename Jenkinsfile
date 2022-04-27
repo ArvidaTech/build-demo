@@ -51,7 +51,7 @@ pipeline {
 	  
     stage("Invoke Deploy") {
       steps {
-        build job: 'deploy-demo/main', parameters: [string(name: 'dockerImage', value:dockerImage),string(name: 'deploy_To', value:$HOST)], wait: false
+        build job: 'deploy-demo/main', parameters: [string(name: 'dockerImage', value:dockerImage)], wait: false
       }
     }
 
