@@ -7,7 +7,7 @@ pipeline {
   agent any
   stages { 
 	  
-    stage("Build:Clone git repo") {
+    stage("Build: Clone git repo") {
       steps {
         git branch: 'main', url: 'https://github.com/ArvidaTech/build-demo.git'
       }
@@ -16,6 +16,12 @@ pipeline {
     stage("Build: Maven Package") {
       steps {
         sh 'mvn package'
+      }
+    }
+	
+	stage("Build: test Package") {
+      steps {
+        sh 'mvn test'
       }
     }
 	
@@ -38,3 +44,4 @@ pipeline {
       }
     }
   }
+}
