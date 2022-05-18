@@ -20,7 +20,7 @@ pipeline {
 */        
     stage("Build: Maven Package") {
       steps {
-        sh 'mvn -e package'
+        sh 'mvn package'
       }
     }
 	
