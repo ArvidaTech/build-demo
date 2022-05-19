@@ -50,6 +50,7 @@ pipeline {
     }
     stage("Post-Build: Scan docker image") {
       steps {
+	      echo "SCAN"
       }
     }	  
 
