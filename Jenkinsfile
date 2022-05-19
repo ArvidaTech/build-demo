@@ -18,19 +18,19 @@ pipeline {
       }
     }
 */        
-    stage("Build: Maven Package") {
-      steps {
-        sh 'mvn package'
-      }
-    }
-	
-	stage("Build: TU") {
+    stage("Build: TU") {
       steps {
         sh 'mvn test'
       }
     }
 	
-    stage("Post-Build: docker img") {
+    stage("Build: Compile Package") {
+      steps {
+        sh 'mvn package'
+      }
+    }
+		
+    stage("Build: docker build img") {
       steps {
 	  	script { 
           dockerImage = docker.build registry + ":$BUILD_NUMBER" 
@@ -49,7 +49,6 @@ pipeline {
       }
     }
 	  
-
 
   }
 post {
