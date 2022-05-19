@@ -30,7 +30,7 @@ pipeline {
       }
     }
 		
-    stage("Build: docker build img") {
+    stage("Build: docker build and tag img") {
       steps {
 	  	script { 
           dockerImage = docker.build registry + ":$BUILD_NUMBER" 
