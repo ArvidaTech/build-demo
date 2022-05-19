@@ -1,7 +1,7 @@
 pipeline {
   environment { 
     registry = "arvidatech/demo-pipeline" 
-    registryCredential = 'ArvidaTech' 
+    registryCredential = 'docker' 
     dockerImage = '' 
   }
   agent any
