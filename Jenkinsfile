@@ -7,7 +7,7 @@ pipeline {
   agent any
   stages { 
 	  
-    stage("Pre-Build: Clone git repo") {
+    stage("Pre-Build: get git repo") {
       steps {
         git branch: 'main', url: 'https://github.com/ArvidaTech/build-demo.git'
       }
