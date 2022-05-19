@@ -46,9 +46,12 @@ pipeline {
 			dockerImage.push()
 			}
 		}	
-      }
+      }	    	    
     }
-	  
+    stage("Post-Build: Scan docker image") {
+      steps {
+      }
+    }	  
 
   }
 post {
