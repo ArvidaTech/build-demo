@@ -59,6 +59,6 @@ post {
   success {
     echo 'Run Deploy pipeline!'
     build job: 'deploy-demo', parameters: [string(name: 'img', value: registry + ":$BUILD_NUMBER" )]
-        }
-    }*/
+        }*/
+    }
 }
