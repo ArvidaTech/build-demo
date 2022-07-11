@@ -38,27 +38,27 @@ pipeline {
       }
     }
 	
-#    stage("Post-Build: push docker image") {
-#      steps {
-#	    script { 
-#		  docker.withRegistry('', registryCredential) {
-#			dockerImage.push 'latest'
-#			dockerImage.push()
-#			}
-#		}	
-#      }	    	    
-#    }
-#    stage("Post-Build: Scan docker image") {
-#      steps {
-#	      echo "SCAN"
-#      }
-#    }	  
-#
-#  }
-#post {
-#  success {
-#    echo 'Run Deploy pipeline!'
-#    build job: 'deploy-demo', parameters: [string(name: 'img', value: registry + ":$BUILD_NUMBER" )]
-#        }
-#    }
+    stage("Post-Build: push docker image") {
+      steps {
+	    script { 
+		  docker.withRegistry('', registryCredential) {
+			dockerImage.push 'latest'
+			dockerImage.push()
+			}
+		}	
+      }	    	    
+    }
+    /*stage("Post-Build: Scan docker image") {
+      steps {
+	      echo "SCAN"
+      }
+    }	  
+
+  }
+post {
+  success {
+    echo 'Run Deploy pipeline!'
+    build job: 'deploy-demo', parameters: [string(name: 'img', value: registry + ":$BUILD_NUMBER" )]
+        }
+    }*/
 }
